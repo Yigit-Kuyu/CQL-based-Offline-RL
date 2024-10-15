@@ -540,6 +540,7 @@ class CQLSAC(nn.Module):
         # Calculates how many times the random actions repeat over the batch of states.
         num_repeat = int (random_actions.shape[0] / states.shape[0])
         # Preparing States for Q-Value Computation
+        # The goal is to have multiple copies of each state.
         # This results in temp_states and temp_next_states having a shape of [batch_size * num_repeat, state_dim].
         temp_states = states.unsqueeze(1).repeat(1, num_repeat, 1).view(states.shape[0] * num_repeat, states.shape[1])
         temp_next_states = next_states.unsqueeze(1).repeat(1, num_repeat, 1).view(next_states.shape[0] * num_repeat, next_states.shape[1])

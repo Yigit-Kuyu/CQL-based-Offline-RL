@@ -471,8 +471,18 @@ class CQLSAC(nn.Module):
         return qs1 - log_pis.detach(), qs2 - log_pis.detach()
     
     def _compute_random_values(self, obs, actions, critic):
+        # Compute Q-values for the given observations and actions using the specified critic
         random_values = critic(obs, actions)
+        
+        # Calculate the log probability of selecting a random action
+        # We assume a uniform distribution over the action space
+        # 0.5 ** self.action_size represents the probability of selecting each action randomly
+        # in a binary action space with self.action_size dimensions
         random_log_probs = math.log(0.5 ** self.action_size)
+        
+        # Subtract the log probability from the Q-values
+        # This adjustment accounts for the probability of selecting actions randomly
+        # It's used in the CQL (Conservative Q-Learning) algorithm to penalize out-of-distribution actions
         return random_values - random_log_probs
     
     def learn(self, experiences):

@@ -2,8 +2,8 @@
 
 This repository contains PyTorch implementations of **Conservative Q-Learning (CQL)** algorithms integrated with:
 
-- **Soft Actor-Critic (SAC)**: `[CQL_SAC](CQL_SAC.py)`
-- **Deep Deterministic Policy Gradient (DDPG)**: `[CQL_DDPG](CQL_DDPG.py)`
+- **Soft Actor-Critic (SAC)**: [CQL_SAC](CQL_SAC.py)
+- **Deep Deterministic Policy Gradient (DDPG)**: [CQL_DDPG](CQL_DDPG.py)
 
 **Conservative Q-Learning** is an offline reinforcement learning algorithm designed to address overestimation bias and distributional shift by penalizing Q-values of out-of-distribution actions. By integrating CQL with SAC and DDPG, the aim is to enhance policy reliability and performance in offline RL settings.
 
